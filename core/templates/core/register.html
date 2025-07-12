@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+</head>
+<body>
+  <h2>Register</h2>
+  
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">
+          {{ message }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
+  <form method="POST" action="{% url 'register_page' %}">
+  {% csrf_token %}
+  
+  <label for="username">Username:</label>
+  <input type="text" name="username" id="username" required>
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" required>
+
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password" required>
+
+  <label for="is_instructor">Register as Instructor:</label>
+  <input type="checkbox" name="is_instructor" id="is_instructor">
+
+  <button type="submit">Register</button>
+</form>
+
+
+  <p>Already have an account? <a href="{% url 'login_page' %}">Login here</a></p>
+</body>
+</html>

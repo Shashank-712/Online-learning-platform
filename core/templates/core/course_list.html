@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<a href="{% url 'home' %}" class="btn btn-primary mb-3">Home</a>
+
+<h1>Courses</h1>
+<ul class="list-group">
+    {% for course in courses %}
+        <li class="list-group-item">
+            <a href="{% url 'course_detail' course.pk %}">{{ course.title }}</a>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No courses available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
